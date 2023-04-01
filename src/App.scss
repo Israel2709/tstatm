@@ -1,0 +1,61 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+$mainBlue: #0a2240;
+$mainRed: #fa4d09;
+$spaceBlue: #001e48;
+
+$theme-colors: map-merge(
+  $theme-colors,
+  (
+    "main-blue": $mainBlue,
+    "main-red": $mainRed,
+    "space-blue": $spaceBlue,
+  )
+);
+
+$font-sizes: map-merge(
+  $font-sizes,
+  (
+    "lg": $spacer * 3,
+    "xl": $spacer * 4,
+    "2xl": $spacer * 6,
+    "4xl": $spacer * 8,
+  )
+);
+
+@import "bootstrap";
+
+body {
+  background-image: url("./assets/body-bg.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: white;
+  background-color: $spaceBlue;
+}
+
+.vh-75 {
+  height: 75vh;
+}
+
+.vh-25 {
+  height: 25vh;
+}
+
+.feature-card {
+  box-shadow: 0 0.5rem 1rem #00000080;
+  h3 {
+    color: $mainRed;
+  }
+  &.active {
+    background-color: $mainRed;
+    transform: scale(1.2);
+    transition: transform 0.5s ease;
+    z-index: 9999;
+    h3,
+    li {
+      color: white;
+    }
+  }
+}
