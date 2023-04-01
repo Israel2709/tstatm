@@ -58,4 +58,10 @@ body {
       color: white;
     }
   }
+  &.bullet {
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+  }
 }
