@@ -1,5 +1,7 @@
 import React, { useCallback, useState } from "react";
 import BreadcrumbIndicator from "./BreadcrumbIndicator";
+import { BsChevronLeft } from "react-icons/bs";
+
 const Breadcrumb = ({ stepList, currentStep }) => {
   return (
     <div className="w-100 custom-breadcrumb mb-5">
@@ -24,6 +26,11 @@ const Breadcrumb = ({ stepList, currentStep }) => {
           className="progress-bar bg-main-red rounded"
           style={{ width: currentStep.progress }}
         ></div>
+      </div>
+
+      <div className="mt-4">
+        <BsChevronLeft />
+        <span className="text-white ms-1">Regresar</span>
       </div>
     </div>
   );
