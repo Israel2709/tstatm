@@ -44,8 +44,8 @@ function App() {
           <b>Estrategia</b> Digital{" "}
         </>,
         <>
-        <b>Big Data &</b> Analysis{" "}
-      </>,
+          <b>Big Data &</b> Analysis{" "}
+        </>,
         <>
           <b>Consultoría</b> Tecnológica
         </>,
@@ -77,33 +77,45 @@ function App() {
       image: spaceman5,
       content: [
         <>
-          Usamos las tecnologías<br />más modernas,
+          Usamos las tecnologías
+          <br />
+          más modernas,
         </>,
         <>
-          Innovamos y creamos<br />proyectos retadores
-        </>
+          Innovamos y creamos
+          <br />
+          proyectos retadores
+        </>,
       ],
     },
     {
       image: spaceman7,
       content: [
         <>
-          ¡Trabajamos en equipo<br />rumbo al éxito!,
+          ¡Trabajamos en equipo
+          <br />
+          rumbo al éxito!,
         </>,
         <>
-          No tenemos código de<br />vestimenta,
-        </>
+          No tenemos código de
+          <br />
+          vestimenta,
+        </>,
       ],
     },
     {
       image: spaceman6,
       content: [
         <>
-          Realizamos actividades<br />para tu bienestar,
+          Realizamos actividades
+          <br />
+          para tu bienestar,
         </>,
         <>
-          ¡Tenemos un parque<br />frente a la oficina!,
-        </>
+          ¡Tenemos un parque
+          <br />
+          frente a la oficina!,
+        </>,
       ],
     },
   ];
@@ -201,13 +213,29 @@ function App() {
             </h2>
             <img src={team} alt="" />
             <div className="d-flex justify-content-between align-items-center text-center">
-              <p className="fs-3 m-0">Contratación<br />remota</p>
+              <p className="fs-3 m-0">
+                Contratación
+                <br />
+                remota
+              </p>
               <BsArrowRight className="fs-3 text-main-red" />
-              <p className="fs-3 m-0">Entrevista con<br />el área de RH</p>
+              <p className="fs-3 m-0">
+                Entrevista con
+                <br />
+                el área de RH
+              </p>
               <BsArrowRight className="fs-3 text-main-red" />
-              <p className="fs-3 m-0">Prueba<br />práctica</p>
+              <p className="fs-3 m-0">
+                Prueba
+                <br />
+                práctica
+              </p>
               <BsArrowRight className="fs-3 text-main-red" />
-              <p className="fs-3 m-0">Entrevista<br />técnica</p>
+              <p className="fs-3 m-0">
+                Entrevista
+                <br />
+                técnica
+              </p>
             </div>
             <div className="text-center mx-auto my-5 py-4">
               <Button>¡Quiero ser parte!</Button>
@@ -224,13 +252,20 @@ function App() {
                 return <DescriptiveCard {...card} />;
               })}
             </div>
-            <div className="card p-2">
-              <table class="table">
+            <div className="card">
+              <table class="table features-table">
                 <thead>
                   <tr>
-                    <th scope="col" className="border-bottom-0">CARACTERISTICAS</th>
-                    <th scope="col" className="text-center border-bottom-0">OTROS</th>
-                    <th scope="col" className="table-active fs-4 text-center border-bottom-0">
+                    <th scope="col" className="border-bottom-0 ps-4">
+                      CARACTERISTICAS
+                    </th>
+                    <th scope="col" className="text-center border-bottom-0">
+                      OTROS
+                    </th>
+                    <th
+                      scope="col"
+                      className="bg-highlight fs-4 text-center border-bottom-0"
+                    >
                       ATOMIC
                     </th>
                   </tr>
@@ -240,10 +275,16 @@ function App() {
                     const { feature, others, atomic } = item;
                     return (
                       <tr>
-                        <td>{feature}</td>
-                        <td className="text-center">{others && <FaRegCheckCircle size={26} color="#fa4d09" />}</td>
-                        <td className="table-active text-center">
-                          {atomic && <FaRegCheckCircle size={26} color="#fa4d09" />}
+                        <td className="ps-4">{feature}</td>
+                        <td className="text-center">
+                          {others && (
+                            <FaRegCheckCircle size={26} color="#fa4d09" />
+                          )}
+                        </td>
+                        <td className="bg-highlight text-center">
+                          {atomic && (
+                            <FaRegCheckCircle size={26} color="#fa4d09" />
+                          )}
                         </td>
                       </tr>
                     );
@@ -263,11 +304,15 @@ function App() {
             <div className="container">
               <div className="row">
                 <div className="col-12 d-flex justify-content-between align-items-center py-5">
-                  <p className="mb-0">2020 AtomicLabs. Todos los derechos reservados.</p>
+                  <p className="mb-0">
+                    2020 AtomicLabs. Todos los derechos reservados.
+                  </p>
                   <div className="d-flex align-items-center">
-                    <a href="" class="text-white mx-5">Aviso de privacidad</a>
-                    <ImLinkedin2 size={30}/>
-                    <ImTwitter className="mx-4" size={30}/>
+                    <a href="" class="text-white mx-5">
+                      Aviso de privacidad
+                    </a>
+                    <ImLinkedin2 size={30} />
+                    <ImTwitter className="mx-4" size={30} />
                   </div>
                 </div>
               </div>
