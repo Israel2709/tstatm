@@ -5,6 +5,7 @@
 $mainBlue: #0a2240;
 $mainRed: #fa4d09;
 $spaceBlue: #001e48;
+$highlight: #e9f1f6;
 
 $theme-colors: map-merge(
   $theme-colors,
@@ -12,6 +13,7 @@ $theme-colors: map-merge(
     "main-blue": $mainBlue,
     "main-red": $mainRed,
     "space-blue": $spaceBlue,
+    "highlight": $highlight,
   )
 );
 
@@ -56,6 +58,22 @@ body {
     h3,
     li {
       color: white;
+    }
+  }
+  &.bullet {
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+  }
+}
+
+.features-table {
+  tr {
+    &:last-of-type {
+      td {
+        border-bottom: none;
+      }
     }
   }
 }
