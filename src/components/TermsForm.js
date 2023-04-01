@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import Button from "./Button";
 import { useForm } from "react-hook-form";
 import admiration from "../assets/admiration.png"
@@ -17,7 +16,7 @@ const TermsForm = ({ handler }) => {
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className="form-group">
 					<p className="fs-4">Por favor revisa nuestros términos y condiciones para este servicio:</p>
-					<p className="user-select-all text-white font-weight-bold fs-4">Consulta Términos y  Condiciones</p>
+					<p className="cursor-pointer text-white font-weight-bold fs-5">Consulta Términos y Condiciones</p>
 					<div className="form-check mt-4">
 						<input className="form-check-input mycheck" type="checkbox" /> 
 						<label className="form-check-label" for="mycheck">
