@@ -1,7 +1,7 @@
 import Button from "./Button";
 import { useForm } from "react-hook-form";
 
-const NameForm = ({ handler }) => {
+const PhoneForm = ({ handler }) => {
   const {
     register,
     formState: { errors, isValid },
@@ -13,44 +13,38 @@ const NameForm = ({ handler }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div class="form-group w-50">
-        <label for="name" className="form-label">
-          Nombre(s)
+        <label for="phone" className="form-label">
+          Número de celular
         </label>
         <input
           type="text"
           className="form-control"
-          {...register("firstName", { required: true, minLength: 5 })}
+          {...register("phone", { required: true, minLength: 10, maxLength: 10 })}
         />
-        {errors.firstName?.type === "required" && (
+        {errors.phone?.type === "required" && (
           <div className="form-text text-danger">El campo es requerido</div>
         )}
-        {errors.firstName?.type === "minLength" && (
+        {errors.phone?.type === "minLength" && (
           <div className="form-text text-danger">
-            El nombre deberá tener mínimo 5 carcateres.
+            El campo deberá tener mínimo 10 carcateres.
+          </div>
+        )}
+        {errors.phone?.type === "maxLength" && (
+          <div className="form-text text-danger">
+            El campo deberá tener máximo 10 carcateres.
           </div>
         )}
       </div>
-      <div className="form-group w-50 mt-3">
-        <label for="lastName" className="form-label">
-          Apellidos
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          {...register("lastName", { required: false })}
-        />
-      </div>
-
       <Button
         type="primary"
         action="submit"
         className="ms-auto d-block"
         disabled={!isValid}
       >
-        Enviar
+        Continuar
       </Button>
     </form>
   );
 };
 
-export default NameForm;
+export default PhoneForm;

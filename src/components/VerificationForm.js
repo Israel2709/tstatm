@@ -1,7 +1,7 @@
 import Button from "./Button";
 import { useForm } from "react-hook-form";
 
-const NameForm = ({ handler }) => {
+const VerificationForm = ({ handler }) => {
   const {
     register,
     formState: { errors, isValid },
@@ -13,44 +13,43 @@ const NameForm = ({ handler }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div class="form-group w-50">
-        <label for="name" className="form-label">
-          Nombre(s)
+        <label for="verification" className="form-label">
+          Código de verificación
         </label>
         <input
           type="text"
           className="form-control"
-          {...register("firstName", { required: true, minLength: 5 })}
+          {...register("verification", { required: true, minLength: 6, maxLength: 6 })}
         />
-        {errors.firstName?.type === "required" && (
+        {errors.verification?.type === "required" && (
           <div className="form-text text-danger">El campo es requerido</div>
         )}
-        {errors.firstName?.type === "minLength" && (
+        {errors.verification?.type === "minLength" && (
           <div className="form-text text-danger">
-            El nombre deberá tener mínimo 5 carcateres.
+            El campo deberá tener mínimo 6 carcateres.
+          </div>
+        )}
+        {errors.verification?.type === "maxLength" && (
+          <div className="form-text text-danger">
+            El campo deberá tener máximo 6 carcateres.
           </div>
         )}
       </div>
-      <div className="form-group w-50 mt-3">
-        <label for="lastName" className="form-label">
-          Apellidos
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          {...register("lastName", { required: false })}
-        />
+      <div class="form-group w-50">
+        <p>¿No recibiste el código?
+            <a href="/"><b>Reenviar código</b></a>
+        </p>
       </div>
-
       <Button
         type="primary"
         action="submit"
         className="ms-auto d-block"
         disabled={!isValid}
       >
-        Enviar
+        Validar código
       </Button>
     </form>
   );
 };
 
-export default NameForm;
+export default VerificationForm;

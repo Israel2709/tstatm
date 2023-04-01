@@ -5,9 +5,13 @@ import step1 from "../assets/step1.png";
 import step2 from "../assets/step2.png";
 import step3 from "../assets/step3.png";
 import step4 from "../assets/step4.png";
+import edit from "../assets/edit.png"
 import Steps from "../components/Steps";
 import Breadcrumb from "../components/Breadcrumb";
 import NameForm from "../components/NameForm";
+import PhoneForm from "../components/PhoneForm";
+import TermsForm from "../components/TermsForm";
+import VerificationForm from "../components/VerificationForm";
 
 const RegisterForm = () => {
   const navigate = useNavigate();
@@ -34,7 +38,7 @@ const RegisterForm = () => {
       <>
         <h1 className="text-center ms-3 fs-lg fw-bold text-uppercase">
           te queremos
-          <span className="text-main-red">conocer</span>
+          <span className="text-main-red"> conocer</span>
         </h1>
       </>
     ),
@@ -53,7 +57,7 @@ const RegisterForm = () => {
         <>
           <h1 className="text-center ms-3 fs-lg fw-bold text-uppercase">
             te queremos
-            <span className="text-main-red">conocer</span>
+            <span className="text-main-red"> conocer</span>
           </h1>
         </>
       ),
@@ -70,29 +74,57 @@ const RegisterForm = () => {
         <>
           <h1 className="text-center ms-3 fs-lg fw-bold text-uppercase">
             valida tu
-            <span className="text-main-red">celular</span>
+            <span className="text-main-red"> celular</span>
           </h1>
         </>
       ),
-      form: <NameForm handler={nextStep} />,
+      description: (
+        <>
+          <p className="fs-4 mb-0">Necesitamos validar tu número para continuar</p>
+          <p className="fs-5">Ingresa tu número a 10 dígitos y te enviremos un código SMS.</p>
+        </>
+      ),
+      form: <PhoneForm handler={nextStep} />,
     },
     {
       step: 3,
       isCompleted: false,
       progress: "61%",
       image: step3,
-      title: "CÓDIGO DE ",
-      description: "VERIFICACIÓN",
-      form: <NameForm handler={nextStep} />,
+      title: (
+        <>
+          <h1 className="text-center ms-3 fs-lg fw-bold text-uppercase">
+            código de
+            <span className="text-main-red"> verificación</span>
+          </h1>
+        </>
+      ),
+      description: (
+        <>
+          <p>
+            Te enviamos un SMS al número:<br />
+            +52 55 1850 9196
+            <img src={edit} alt="edit"></img>
+          </p>
+          <p>Ingresa el código de verificación:</p>
+        </>
+      ),
+      form: <VerificationForm handler={nextStep} />,
     },
     {
       step: 4,
       isCompleted: false,
       progress: "82%",
       image: step4,
-      title: "TÉRMINOS Y",
-      description: "CONDICIONES",
-      form: <NameForm handler={nextStep} />,
+      title:  (
+        <>
+          <h1 className="text-center ms-3 fs-lg fw-bold text-uppercase">
+            términos y
+            <span className="text-main-red"> condiciones</span>
+          </h1>
+        </>
+      ),
+      form: <TermsForm handler={nextStep} />,
     },
   ]);
 
@@ -103,7 +135,7 @@ const RegisterForm = () => {
           <div className="w-100">
             <Breadcrumb stepList={steps} currentStep={currentStep} />
             <Steps image={currentStep.image}>{currentStep.title}</Steps>
-            <p className="fs-3 text-white">{currentStep.description}</p>
+            <p className="fs-4 text-white">{currentStep.description}</p>
             {currentStep.form}
           </div>
         </div>
