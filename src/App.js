@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useCallback, useState } from "react";
 
 import "./App.scss";
@@ -43,6 +44,9 @@ function App() {
           <b>Estrategia</b> Digital{" "}
         </>,
         <>
+        <b>Big Data &</b> Analysis{" "}
+      </>,
+        <>
           <b>Consultoría</b> Tecnológica
         </>,
         <>
@@ -72,22 +76,34 @@ function App() {
     {
       image: spaceman5,
       content: [
-        "Usamos las tecnologías más modernas",
-        "Innovamos y creamos proyectos retadores",
+        <>
+          Usamos las tecnologías<br />más modernas,
+        </>,
+        <>
+          Innovamos y creamos<br />proyectos retadores
+        </>
       ],
     },
     {
       image: spaceman7,
       content: [
-        "¡Trabajamos en equipo rumbo al éxito!",
-        "No tenemos código de vestimenta",
+        <>
+          ¡Trabajamos en equipo<br />rumbo al éxito!,
+        </>,
+        <>
+          No tenemos código de<br />vestimenta,
+        </>
       ],
     },
     {
       image: spaceman6,
       content: [
-        "Realizamos actividades para tu bienestar",
-        "¡Tenemos un parque frente a la oficina!",
+        <>
+          Realizamos actividades<br />para tu bienestar,
+        </>,
+        <>
+          ¡Tenemos un parque<br />frente a la oficina!,
+        </>
       ],
     },
   ];
@@ -148,7 +164,7 @@ function App() {
               dentro del equipo <br />
               <span className="text-main-red">ATOMIC</span>LABS
             </h1>
-            <Button type="default">¡Quiero ser parte!</Button>
+            <Button>¡Quiero ser parte!</Button>
           </div>
         </div>
         <div className="row vh-25">
@@ -179,21 +195,21 @@ function App() {
         </div>
         <div className="row">
           <div className="col-12">
-            <h2 className="my-5 text-center fs-lg fw-bold">
+            <h2 className="my-5 pt-5 text-center fs-lg fw-bold">
               ¡TE ENCANTARÁ <br />{" "}
               <span className="text-main-red">TRABAJAR CON NOSOTROS!</span>
             </h2>
             <img src={team} alt="" />
-            <div className="d-flex justify-content-between align-items-center">
-              <p className="fs-3 m-0">Contratación remota</p>
+            <div className="d-flex justify-content-between align-items-center text-center">
+              <p className="fs-3 m-0">Contratación<br />remota</p>
               <BsArrowRight className="fs-3 text-main-red" />
-              <p className="fs-3 m-0">Entrevista con el área de RH</p>
+              <p className="fs-3 m-0">Entrevista con<br />el área de RH</p>
               <BsArrowRight className="fs-3 text-main-red" />
-              <p className="fs-3 m-0">Prueba práctica</p>
+              <p className="fs-3 m-0">Prueba<br />práctica</p>
               <BsArrowRight className="fs-3 text-main-red" />
-              <p className="fs-3 m-0">Entrevista técnica</p>
+              <p className="fs-3 m-0">Entrevista<br />técnica</p>
             </div>
-            <div className="w-25 mx-auto mt-5">
+            <div className="text-center mx-auto my-5 py-4">
               <Button>¡Quiero ser parte!</Button>
             </div>
           </div>
@@ -203,19 +219,19 @@ function App() {
             <h2 className="my-5 text-center fs-lg fw-bold">
               ¿POR QUÉ <span className="text-main-red">ATOMIC?</span>
             </h2>
-            <div className="row row-cols-3 g-4">
+            <div className="row row-cols-3 g-4 mb-5">
               {descriptiveCards.map((card) => {
                 return <DescriptiveCard {...card} />;
               })}
             </div>
-            <div className="card p-5">
+            <div className="card p-2">
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">Características</th>
-                    <th scope="col">Otros</th>
-                    <th scope="col" className="table-active">
-                      Atomic
+                    <th scope="col" className="border-bottom-0">CARACTERISTICAS</th>
+                    <th scope="col" className="text-center border-bottom-0">OTROS</th>
+                    <th scope="col" className="table-active fs-4 text-center border-bottom-0">
+                      ATOMIC
                     </th>
                   </tr>
                 </thead>
@@ -224,10 +240,10 @@ function App() {
                     const { feature, others, atomic } = item;
                     return (
                       <tr>
-                        <th scope="row">{feature}</th>
-                        <td>{others && <FaRegCheckCircle />}</td>
-                        <td className="table-active">
-                          {atomic && <FaRegCheckCircle />}
+                        <td>{feature}</td>
+                        <td className="text-center">{others && <FaRegCheckCircle size={26} color="#fa4d09" />}</td>
+                        <td className="table-active text-center">
+                          {atomic && <FaRegCheckCircle size={26} color="#fa4d09" />}
                         </td>
                       </tr>
                     );
@@ -235,7 +251,7 @@ function App() {
                 </tbody>
               </table>
             </div>
-            <div className="w-25 py-5 mx-auto">
+            <div className="w-25 py-5 my-3 mx-auto">
               <Button>¡Quiero ser parte!</Button>
             </div>
           </div>
@@ -246,12 +262,12 @@ function App() {
           <div className="col-12">
             <div className="container">
               <div className="row">
-                <div className="col-12 d-flex justify-content-between p-5">
-                  <p>2020 AtomicLabs. Todos los derechos reservados.</p>
-                  <div>
-                    <a href="">Aviso de privacidad</a>
-                    <ImLinkedin2 />
-                    <ImTwitter />
+                <div className="col-12 d-flex justify-content-between align-items-center py-5">
+                  <p className="mb-0">2020 AtomicLabs. Todos los derechos reservados.</p>
+                  <div className="d-flex align-items-center">
+                    <a href="" class="text-white mx-5">Aviso de privacidad</a>
+                    <ImLinkedin2 size={30}/>
+                    <ImTwitter className="mx-4" size={30}/>
                   </div>
                 </div>
               </div>
