@@ -1,34 +1,23 @@
 import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import spaceman2 from "../assets/spaceman-2.png";
+import back1 from "../assets/spaceman-2.png";
+import back2 from "../assets/spaceman-3.png";
+import back4 from "../assets/space-man-3.png";
 import step1 from "../assets/step1.png";
 import step2 from "../assets/step2.png";
 import step3 from "../assets/step3.png";
 import step4 from "../assets/step4.png";
-import edit from "../assets/edit.png"
 import Steps from "../components/Steps";
 import Breadcrumb from "../components/Breadcrumb";
 import NameForm from "../components/NameForm";
 import PhoneForm from "../components/PhoneForm";
 import TermsForm from "../components/TermsForm";
 import VerificationForm from "../components/VerificationForm";
+import Footer from "../components/Footer"
 
 const RegisterForm = () => {
   const navigate = useNavigate();
-  const nextStep = () => {
-    const stepIndex = currentStep.step + 1;
-    console.log(stepIndex);
-    if (stepIndex <= steps.length) {
-      const newSteps = [...steps];
-      const updatedSteps = newSteps.map((step) =>
-        step.step < stepIndex ? { ...step, isCompleted: true } : step
-      );
-      setCurrentStep(steps.find((step) => step.step === stepIndex));
-      setSteps(updatedSteps);
-    } else if (stepIndex > steps.length) {
-      navigate("/confirmation");
-    }
-  };
+
   const [currentStep, setCurrentStep] = useState({
     step: 1,
     isCompleted: false,
@@ -44,7 +33,7 @@ const RegisterForm = () => {
     ),
     description:
       "Queremos saber que eres tú , por favor ingresa los siguientes datos:",
-    form: <NameForm handler={nextStep} />,
+    background: back1
   });
 
   const [steps, setSteps] = useState([
@@ -63,7 +52,7 @@ const RegisterForm = () => {
       ),
       description:
         "Queremos saber que eres tú , por favor ingresa los siguientes datos:",
-      form: <NameForm handler={nextStep} />,
+      background: back1
     },
     {
       step: 2,
@@ -84,7 +73,7 @@ const RegisterForm = () => {
           <p className="fs-5">Ingresa tu número a 10 dígitos y te enviremos un código SMS.</p>
         </>
       ),
-      form: <PhoneForm handler={nextStep} />,
+      background: back2
     },
     {
       step: 3,
@@ -99,17 +88,7 @@ const RegisterForm = () => {
           </h1>
         </>
       ),
-      description: (
-        <>
-          <p>
-            Te enviamos un SMS al número:<br />
-            +52 55 1850 9196
-            <img src={edit} alt="edit"></img>
-          </p>
-          <p>Ingresa el código de verificación:</p>
-        </>
-      ),
-      form: <VerificationForm handler={nextStep} />,
+      background: back2
     },
     {
       step: 4,
@@ -123,27 +102,59 @@ const RegisterForm = () => {
             <span className="text-main-red"> condiciones</span>
           </h1>
         </>
-      ),
-      form: <TermsForm handler={nextStep} />,
+      ), 
+      background: back4
     },
   ]);
 
+  const nextStep = useCallback(() => {
+    const stepIndex = currentStep.step + 1;
+    if (stepIndex <= steps.length) {
+      const newSteps = [...steps];
+      const updatedSteps = newSteps.map((step) =>
+        step.step < stepIndex ? { ...step, isCompleted: true } : step
+      );
+      setCurrentStep(steps.find((step) => step.step === stepIndex));
+      setSteps(updatedSteps);
+    } else if (stepIndex > steps.length) {
+      navigate("/confirmation");
+    }
+  }, [currentStep]);
+
+  const renderForm = () => {
+    switch (currentStep.step) {
+      case 1:
+        return <NameForm handler={nextStep} />;
+      case 2:
+        return <PhoneForm handler={nextStep} />;
+      case 3:
+        return <VerificationForm handler={nextStep} />;
+      case 4:
+        return <TermsForm handler={nextStep} />;
+      default:
+        return <NameForm handler={nextStep} />;
+    }
+  };
+
   return (
-    <div className="container">
-      <div className="row vh-75">
-        <div className="col-12 col-md-8 d-flex h-100 align-items-center">
-          <div className="w-100">
-            <Breadcrumb stepList={steps} currentStep={currentStep} />
-            <Steps image={currentStep.image}>{currentStep.title}</Steps>
-            <p className="fs-4 text-white">{currentStep.description}</p>
-            {currentStep.form}
+    <>
+      <div className="container">
+        <div className="row vh-100">
+          <div className="col-12 col-md-8 d-flex h-100 align-items-center">
+            <div className="w-100">
+              <Breadcrumb stepList={steps} currentStep={currentStep} />
+              <Steps image={currentStep.image}>{currentStep.title}</Steps>
+              <p className="fs-3 text-white">{currentStep.description}</p>
+              {renderForm()}
+            </div>
+          </div>
+          <div className="col-12 col-md-4 h-100 d-flex align-items-center">
+            <img src={currentStep.background} alt="imageSpaceman2" />
           </div>
         </div>
-        <div className="col-12 col-md-4 h-100 d-flex align-items-center">
-          <img src={spaceman2} alt="imageSpaceman2" />
-        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

@@ -12,7 +12,7 @@ const PhoneForm = ({ handler }) => {
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div class="form-group w-50">
+      <div className="form-group w-50">
         <label for="phone" className="form-label">
           Número de celular
         </label>

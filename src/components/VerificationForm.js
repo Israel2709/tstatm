@@ -1,5 +1,6 @@
 import Button from "./Button";
 import { useForm } from "react-hook-form";
+import edit from "../assets/edit.png"
 
 const VerificationForm = ({ handler }) => {
   const {
@@ -12,7 +13,12 @@ const VerificationForm = ({ handler }) => {
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div class="form-group w-50">
+      <div className="form-group w-50">
+        <p className="fs-4 mb-0">Te enviamos un SMS al número:</p>
+        <p className="fs-4 d-flex align-items-center">+52 55 1850 9196
+            <img src={edit} alt="edit" className="ms-3"></img>
+        </p>
+        <p>Ingresa el código de verificación:</p>
         <label for="verification" className="form-label">
           Código de verificación
         </label>
@@ -35,9 +41,9 @@ const VerificationForm = ({ handler }) => {
           </div>
         )}
       </div>
-      <div class="form-group w-50">
+      <div className="form-group w-50 mt-5">
         <p>¿No recibiste el código?
-            <a href="/"><b>Reenviar código</b></a>
+            <a href="/" className="ms-2 text-white text-decoration-none"><b>Reenviar código</b></a>
         </p>
       </div>
       <Button

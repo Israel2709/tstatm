@@ -130,7 +130,7 @@ function Landing() {
               })}
             </div>
             <div className="card">
-              <table class="table features-table">
+              <table className="table features-table">
                 <thead>
                   <tr>
                     <th scope="col" className="border-bottom-0 ps-4 fs-5">
