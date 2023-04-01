@@ -12,7 +12,6 @@ import featureCard2 from "./assets/feature-card-2.png";
 import featureCard3 from "./assets/feature-card-3.png";
 import team from "./assets/team.png";
 import { BsArrowRight } from "react-icons/bs";
-import { ImLinkedin2, ImTwitter } from "react-icons/im";
 import { FaRegCheckCircle } from "react-icons/fa";
 import FeatureCard from "./components/FeatureCard";
 import Button from "./components/Button";
