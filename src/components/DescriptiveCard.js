@@ -11,7 +11,7 @@ const DescriptiveCard = (props) => {
             {content.map((item) => {
               return (
                 <li className="d-flex flex-row align-items-baseline">
-                  <FaRegCheckCircle size={18} color="fa4d09" />
+                  <FaRegCheckCircle size={18} className="text-main-red" />
                   <span className="fs-5 ms-3">{item}</span>
                 </li>
               );

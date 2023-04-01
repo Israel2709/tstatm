@@ -1,81 +1,113 @@
+import React, { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import spaceman2 from "../assets/spaceman-2.png";
-import Button from "../components/Button";
 import step1 from "../assets/step1.png";
 import step2 from "../assets/step2.png";
 import step3 from "../assets/step3.png";
 import step4 from "../assets/step4.png";
 import Steps from "../components/Steps";
-
-const stepsRegister = [
-  {
-    image: step1,
-    title: "TE QUEREMOS ",
-    description: "CONOCER",
-  },
-  {
-    image: step2,
-    title: "VALIDA TU ",
-    description: "CELULAR",
-  },
-  {
-    image: step3,
-    title: "CÓDIGO DE ",
-    description: "VERIFICACIÓN",
-  },
-  {
-    image: step4,
-    title: "TÉRMINOS Y",
-    description: "CONDICIONES",
-  },
-];
+import Breadcrumb from "../components/Breadcrumb";
+import NameForm from "../components/NameForm";
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
+  const nextStep = () => {
+    const stepIndex = currentStep.step + 1;
+    console.log(stepIndex);
+    if (stepIndex <= steps.length) {
+      const newSteps = [...steps];
+      const updatedSteps = newSteps.map((step) =>
+        step.step < stepIndex ? { ...step, isCompleted: true } : step
+      );
+      setCurrentStep(steps.find((step) => step.step === stepIndex));
+      setSteps(updatedSteps);
+    } else if (stepIndex > steps.length) {
+      navigate("/confirmation");
+    }
+  };
+  const [currentStep, setCurrentStep] = useState({
+    step: 1,
+    isCompleted: false,
+    progress: "20%",
+    image: step1,
+    title: (
+      <>
+        <h1 className="text-center ms-3 fs-lg fw-bold text-uppercase">
+          te queremos
+          <span className="text-main-red">conocer</span>
+        </h1>
+      </>
+    ),
+    description:
+      "Queremos saber que eres tú , por favor ingresa los siguientes datos:",
+    form: <NameForm handler={nextStep} />,
+  });
+
+  const [steps, setSteps] = useState([
+    {
+      step: 1,
+      isCompleted: false,
+      progress: "20%",
+      image: step1,
+      title: (
+        <>
+          <h1 className="text-center ms-3 fs-lg fw-bold text-uppercase">
+            te queremos
+            <span className="text-main-red">conocer</span>
+          </h1>
+        </>
+      ),
+      description:
+        "Queremos saber que eres tú , por favor ingresa los siguientes datos:",
+      form: <NameForm handler={nextStep} />,
+    },
+    {
+      step: 2,
+      isCompleted: false,
+      progress: "40%",
+      image: step2,
+      title: (
+        <>
+          <h1 className="text-center ms-3 fs-lg fw-bold text-uppercase">
+            valida tu
+            <span className="text-main-red">celular</span>
+          </h1>
+        </>
+      ),
+      form: <NameForm handler={nextStep} />,
+    },
+    {
+      step: 3,
+      isCompleted: false,
+      progress: "61%",
+      image: step3,
+      title: "CÓDIGO DE ",
+      description: "VERIFICACIÓN",
+      form: <NameForm handler={nextStep} />,
+    },
+    {
+      step: 4,
+      isCompleted: false,
+      progress: "82%",
+      image: step4,
+      title: "TÉRMINOS Y",
+      description: "CONDICIONES",
+      form: <NameForm handler={nextStep} />,
+    },
+  ]);
+
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-12 col-md-8 h-100">
-          <div className="row">
-            <Steps image={step1} title="TE QUEREMOS " description="CONOCER" />
-            <p className="fs-3 text-white">
-              Queremos saber que eres tú , por favor ingresa los siguientes
-              datos:
-            </p>
-          </div>
-          <div className="row">
-            <div className="col-6">
-              <form>
-                <div class="mb-3">
-                  <label for="name" class="form-label">
-                    Nombre(s)
-                  </label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="name"
-                    aria-describedby="nameHelp"
-                  />
-                  <div id="nameHelp" class="form-text text-danger">
-                    El nombre deberá tener mínimo 5 carcateres.
-                  </div>
-                </div>
-                <div class="mb-3">
-                  <label for="lastName" class="form-label">
-                    Apellidos
-                  </label>
-                  <input type="text" class="form-control" id="lastName" />
-                </div>
-              </form>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-2 offset-md-9">
-              <Button type="primary" className="w-25">
-                Enviar
-              </Button>
-            </div>
+      <div className="row vh-75">
+        <div className="col-12 col-md-8 d-flex h-100 align-items-center">
+          <div className="w-100">
+            <Breadcrumb stepList={steps} currentStep={currentStep} />
+            <Steps image={currentStep.image}>{currentStep.title}</Steps>
+            <p className="fs-3 text-white">{currentStep.description}</p>
+            {currentStep.form}
           </div>
         </div>
-        <div className="col-12 col-md-4">
+        <div className="col-12 col-md-4 h-100 d-flex align-items-center">
           <img src={spaceman2} alt="imageSpaceman2" />
         </div>
       </div>

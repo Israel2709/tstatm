@@ -33,7 +33,7 @@ $font-sizes: map-merge(
 
 body {
   background-image: url("./assets/body-bg.png");
-  background-size: contain;
+  background-size: 100%;
   background-repeat: no-repeat;
   color: white;
   background-color: $spaceBlue;
