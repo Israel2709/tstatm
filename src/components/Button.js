@@ -5,7 +5,7 @@ const Button = ({ children, type }) => {
     {
       "btn-light text-main-blue": !type || type === "default",
     },
-    "btn fs-5 rounded-pill px-5"
+    "btn fs-4 fw-bold rounded-pill px-5"
   );
   return <button className={btnClass}>{children}</button>;
 };
