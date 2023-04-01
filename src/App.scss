@@ -98,3 +98,28 @@ body {
     }
   }
 }
+
+.mycheck {
+  cursor: pointer;
+  background-color: $mainBlue;
+  background-image: url("./assets/check.png");
+  width: 18px;
+  height: 18px;
+  appearance: none;
+  background-size: auto;
+}
+
+.mycheck:disabled {
+  background-color: white;
+  background-image: none;
+} 
+
+.mycheck:checked{
+  background-color: #fff;
+  background-image: url("./assets/check.png");
+}
+
+.mycheck:focus, .mycheck:hover {
+  border: none;
+  box-shadow: none;
+}

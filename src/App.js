@@ -253,7 +253,7 @@ function App() {
               })}
             </div>
             <div className="card">
-              <table class="table features-table">
+              <table className="table features-table">
                 <thead>
                   <tr>
                     <th scope="col" className="border-bottom-0 ps-4 fs-5">
@@ -278,12 +278,12 @@ function App() {
                         <td className="ps-4">{feature}</td>
                         <td className="text-center">
                           {others && (
-                            <FaRegCheckCircle size={26} color="#fa4d09" />
+                            <FaRegCheckCircle size={26} className="text-main-red" />
                           )}
                         </td>
                         <td className="bg-highlight text-center">
                           {atomic && (
-                            <FaRegCheckCircle size={26} color="#fa4d09" />
+                            <FaRegCheckCircle size={26} className="text-main-red" />
                           )}
                         </td>
                       </tr>
