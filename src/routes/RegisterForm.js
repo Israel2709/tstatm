@@ -11,20 +11,7 @@ import NameForm from "../components/NameForm";
 
 const RegisterForm = () => {
   const navigate = useNavigate();
-  const nextStep = () => {
-    const stepIndex = currentStep.step + 1;
-    console.log(stepIndex);
-    if (stepIndex <= steps.length) {
-      const newSteps = [...steps];
-      const updatedSteps = newSteps.map((step) =>
-        step.step < stepIndex ? { ...step, isCompleted: true } : step
-      );
-      setCurrentStep(steps.find((step) => step.step === stepIndex));
-      setSteps(updatedSteps);
-    } else if (stepIndex > steps.length) {
-      navigate("/confirmation");
-    }
-  };
+
   const [currentStep, setCurrentStep] = useState({
     step: 1,
     isCompleted: false,
@@ -40,7 +27,6 @@ const RegisterForm = () => {
     ),
     description:
       "Queremos saber que eres tú , por favor ingresa los siguientes datos:",
-    form: <NameForm handler={nextStep} />,
   });
 
   const [steps, setSteps] = useState([
@@ -59,7 +45,6 @@ const RegisterForm = () => {
       ),
       description:
         "Queremos saber que eres tú , por favor ingresa los siguientes datos:",
-      form: <NameForm handler={nextStep} />,
     },
     {
       step: 2,
@@ -74,7 +59,6 @@ const RegisterForm = () => {
           </h1>
         </>
       ),
-      form: <NameForm handler={nextStep} />,
     },
     {
       step: 3,
@@ -83,7 +67,6 @@ const RegisterForm = () => {
       image: step3,
       title: "CÓDIGO DE ",
       description: "VERIFICACIÓN",
-      form: <NameForm handler={nextStep} />,
     },
     {
       step: 4,
@@ -92,9 +75,37 @@ const RegisterForm = () => {
       image: step4,
       title: "TÉRMINOS Y",
       description: "CONDICIONES",
-      form: <NameForm handler={nextStep} />,
     },
   ]);
+
+  const nextStep = useCallback(() => {
+    const stepIndex = currentStep.step + 1;
+    if (stepIndex <= steps.length) {
+      const newSteps = [...steps];
+      const updatedSteps = newSteps.map((step) =>
+        step.step < stepIndex ? { ...step, isCompleted: true } : step
+      );
+      setCurrentStep(steps.find((step) => step.step === stepIndex));
+      setSteps(updatedSteps);
+    } else if (stepIndex > steps.length) {
+      navigate("/confirmation");
+    }
+  }, [currentStep]);
+
+  const renderForm = () => {
+    switch (currentStep.step) {
+      case 1:
+        return <NameForm handler={nextStep} />;
+      case 2:
+        return <NameForm handler={nextStep} />;
+      case 3:
+        return <NameForm handler={nextStep} />;
+      case 4:
+        return <NameForm handler={nextStep} />;
+      default:
+        return <NameForm handler={nextStep} />;
+    }
+  };
 
   return (
     <div className="container">
@@ -104,7 +115,7 @@ const RegisterForm = () => {
             <Breadcrumb stepList={steps} currentStep={currentStep} />
             <Steps image={currentStep.image}>{currentStep.title}</Steps>
             <p className="fs-3 text-white">{currentStep.description}</p>
-            {currentStep.form}
+            {renderForm()}
           </div>
         </div>
         <div className="col-12 col-md-4 h-100 d-flex align-items-center">
