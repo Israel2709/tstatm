@@ -2,19 +2,24 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.scss";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RegisterForm from "./routes/RegisterForm";
+import Landing from "./routes/Landing";
+import Confirmation from "./routes/Confirmation";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <Landing />,
   },
   {
     path: "/register",
     element: <RegisterForm />,
+  },
+  {
+    path: "/confirmation",
+    element: <Confirmation />,
   },
 ]);
 

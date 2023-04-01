@@ -6,6 +6,7 @@ $mainBlue: #0a2240;
 $mainRed: #fa4d09;
 $spaceBlue: #001e48;
 $highlight: #e9f1f6;
+$lightGray: #eaeaea;
 
 $theme-colors: map-merge(
   $theme-colors,
@@ -14,6 +15,7 @@ $theme-colors: map-merge(
     "main-red": $mainRed,
     "space-blue": $spaceBlue,
     "highlight": $highlight,
+    "light-gray": $lightGray,
   )
 );
 
@@ -74,6 +76,25 @@ body {
       td {
         border-bottom: none;
       }
+    }
+  }
+}
+
+.custom-breadcrumb {
+  .indicator {
+    font-size: $spacer;
+    border-radius: 100%;
+    width: $spacer * 2;
+    height: $spacer * 2;
+    border: 2px solid $highlight;
+    color: $lightGray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.current {
+      background-color: $mainRed;
+      color: white;
+      border-color: $mainRed;
     }
   }
 }

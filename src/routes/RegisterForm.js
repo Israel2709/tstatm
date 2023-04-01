@@ -1,5 +1,7 @@
+import Breadcrumb from "../components/Breadcrumb";
+
 const RegisterForm = () => {
-  return <h1>Register Form</h1>;
+  return <Breadcrumb />;
 };
 
 export default RegisterForm;
