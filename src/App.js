@@ -16,6 +16,7 @@ import { ImLinkedin2, ImTwitter } from "react-icons/im";
 import { FaRegCheckCircle } from "react-icons/fa";
 import FeatureCard from "./components/FeatureCard";
 import Button from "./components/Button";
+import Footer from "./components/Footer"
 import DescriptiveCard from "./components/DescriptiveCard";
 
 function App() {
@@ -256,15 +257,15 @@ function App() {
               <table class="table features-table">
                 <thead>
                   <tr>
-                    <th scope="col" className="border-bottom-0 ps-4">
+                    <th scope="col" className="border-bottom-0 ps-4 fs-5">
                       CARACTERISTICAS
                     </th>
-                    <th scope="col" className="text-center border-bottom-0">
+                    <th scope="col" className="text-center border-bottom-0 fs-5">
                       OTROS
                     </th>
                     <th
                       scope="col"
-                      className="bg-highlight fs-4 text-center border-bottom-0"
+                      className="bg-highlight fs-3 text-center border-bottom-0"
                     >
                       ATOMIC
                     </th>
@@ -298,28 +299,7 @@ function App() {
           </div>
         </div>
       </div>
-      <footer className="container-fluid bg-dark text-white">
-        <div className="row">
-          <div className="col-12">
-            <div className="container">
-              <div className="row">
-                <div className="col-12 d-flex justify-content-between align-items-center py-5">
-                  <p className="mb-0">
-                    2020 AtomicLabs. Todos los derechos reservados.
-                  </p>
-                  <div className="d-flex align-items-center">
-                    <a href="" class="text-white mx-5">
-                      Aviso de privacidad
-                    </a>
-                    <ImLinkedin2 size={30} />
-                    <ImTwitter className="mx-4" size={30} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
